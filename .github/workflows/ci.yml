@@ -21,3 +21,11 @@ jobs:
         run: |
           cd build
           ctest --output-on-failure
+      - name: Pack
+        run: |
+          cd build
+          cpack -G DEB
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build_linux
+          path: build/*.deb
